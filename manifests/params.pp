@@ -54,6 +54,9 @@ class ldap::params {
         quantal: {
           $openldap_packages = ['slapd', 'ldap-utils', 'libperl5.14']
         }
+        raring: {
+          $openldap_packages = ['slapd', 'ldap-utils']
+        }
         default: {
           $openldap_packages = ['slapd', 'ldap-utils', 'libperl5.10']
           $openldap_client_packages = [
