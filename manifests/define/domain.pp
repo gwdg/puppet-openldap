@@ -26,12 +26,14 @@
 #   basedn   => 'dc=puppetlabs,dc=test',
 #   rootdn   => 'cn=admin',
 #   rootpw   => 'test',
+#   adminpw  => 'keystone-password'
 # }
 define ldap::define::domain(
   $ensure = 'present',
   $basedn = undef,
   $rootdn = undef,
-  $rootpw = undef
+  $rootpw = undef,
+  $ksadminpw = undef
 ){
   File {
     owner   => 'root',

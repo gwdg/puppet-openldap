@@ -1,8 +1,8 @@
 # example.org
 dn: <%= basedn %>
-objectClass: top
 objectClass: dcObject
 objectClass: organization
+objectClass: top
 o: <%= name %>
 dc: <%= name.split('.')[0] %>
 description: <%= name %>
@@ -15,20 +15,56 @@ cn: <%= rootdn.gsub!(/^(..)=/, '') %>
 description: LDAP administrator
 userPassword: <%= rootpw %>
 
-dn: ou=people,<%= basedn %>
+dn: ou=Users,<%= basedn %>
+ou: Users
 objectClass: organizationalUnit
-ou: people
+objectClass: top
+description: Users subtree
 
-# Group, example.org
-dn: ou=groups,<%= basedn %>
+dn: ou=Groups,<%= basedn %>
+ou: Groups
 objectClass: organizationalUnit
-ou: groups
+objectClass: top
+description: Tenants for keystone
 
-dn: uid=test,ou=people,<%= basedn %>
+dn: ou=Roles,<%= basedn %>
+ou: Roles
+objectClass: organizationalUnit
+objectClass: top
+description: Roles for keystone
+
+dn: ou=Domains,<%= basedn %>
+ou: Domains
+objectClass: organizationalUnit
+objectClass: top
+description: needed by Grizzly
+
+dn: cn=default,ou=Domains,<%= basedn %>
+cn: default
+objectClass: groupOfNames
+member: cn=dumb,dc=nonexistent
+
+dn: cn=_member_,ou=Roles,<%= basedn %>
+cn: _member_
+objectClass: organizationalRole
+ou: _member_
+
+dn: cn=Member,ou=Roles,<%= basedn %>
+cn: Member
+objectClass: organizationalRole
+ou: Member
+
+dn: cn=admin,ou=Roles,<%= basedn %>
+cn: admin
+objectClass: organizationalRole
+ou: admin
+
+dn: uid=admin,ou=Users,<%= basedn %>
+cn: admin
 objectClass: inetOrgPerson
-uid: test
-cn: I. Test User
-cn: Test User
-surname: User
-mail: test@example.com
-userPassword: pass
+sn: TRUE
+businessCategory: default
+mail: admin@cloud.com
+uid: admin
+userPassword: <%= ksadminpw %> 
+

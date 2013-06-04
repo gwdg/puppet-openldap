@@ -19,20 +19,20 @@ class ldap::server::package(
 ) {
 
   # Manage the User and Group
-  user { $ldap::params::lp_daemon_user:
-    ensure  => 'present',
-    uid     => $ldap::params::lp_daemon_uid,
-    gid     => $ldap::params::lp_daemon_gid,
-    comment => 'LDAP User',
-    home    => $ldap::params::lp_openldap_var_dir,
-    shell   => '/bin/false',
-    before  => Package[$ldap::params::openldap_packages],
-  }
-  group { $ldap::params::lp_daemon_user:
-    ensure => 'present',
-    gid    => $ldap::params::lp_daemon_gid,
-    before => Package[$ldap::params::openldap_packages],
-  }
+  #user { $ldap::params::lp_daemon_user:
+  #  ensure  => 'present',
+  #  uid     => $ldap::params::lp_daemon_uid,
+  #  gid     => $ldap::params::lp_daemon_gid,
+  #  comment => 'LDAP User',
+  #  home    => $ldap::params::lp_openldap_var_dir,
+  #  shell   => '/bin/false',
+  #  before  => Package[$ldap::params::openldap_packages],
+  # }
+  # group { $ldap::params::lp_daemon_user:
+  #  ensure => 'present',
+  #  gid    => $ldap::params::lp_daemon_gid,
+  #  before => Package[$ldap::params::openldap_packages],
+  #}
 
   package { $ldap::params::openldap_packages:
     ensure => present,

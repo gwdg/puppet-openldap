@@ -14,13 +14,13 @@
 #
 # This class file is not called directly
 class ldap::params {
-
   case $::operatingsystem {
     ubuntu,debian: {
       $lp_daemon_user = 'openldap'
       $lp_daemon_group = 'openldap'
-      $lp_daemon_uid = '55'
-      $lp_daemon_gid = '55'
+      # $lp_daemon_uid = '55'
+      # $lp_daemon_gid = '55'
+      # dadler: $lp_openldap_user = 'root'
       $lp_nsswitch = 'puppet:///modules/ldap/client/nsswitch/nsswitch.conf.debian'
       $lp_openldap_run_dir = '/var/run/slapd'
       $lp_openldap_service = 'slapd'
@@ -51,6 +51,9 @@ class ldap::params {
         precise: {
           $openldap_packages = ['slapd', 'ldap-utils', 'libperl5.14']
         }
+        quantal: {
+          $openldap_packages = ['slapd', 'ldap-utils', 'libperl5.14']
+        }
         default: {
           $openldap_packages = ['slapd', 'ldap-utils', 'libperl5.10']
           $openldap_client_packages = [
@@ -62,8 +65,8 @@ class ldap::params {
     fedora,redhat,centos,suse,opensuse: {
       $lp_daemon_user = 'ldap'
       $lp_daemon_group = 'ldap'
-      $lp_daemon_uid = '55'
-      $lp_daemon_gid = '55'
+      # $lp_daemon_uid = '55'
+      # $lp_daemon_gid = '55'
       $lp_nsswitch = 'puppet:///modules/ldap/client/nsswitch/nsswitch.conf.redhat'
       $lp_openldap_run_dir = '/var/run/openldap'
       $lp_openldap_service = 'ldap'

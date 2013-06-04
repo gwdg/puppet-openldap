@@ -26,14 +26,14 @@ class ldap::server::config (
     mode  => '0640',
   }
 
-  file { '/etc/ldap-server':
-    ensure  => file,
-    content => 'openldap',
-  }
+  # file { '/etc/ldap-server':
+  #  ensure  => file,
+  #  content => 'openldap',
+  #}
 
   file { "${ldap::params::lp_openldap_conf_dir}/slapd.conf":
     ensure  => file,
-    group   => $ldap::params::lp_daemon_user,
+    group   => $ldap::params::lp_daemon_group,
     content => template('ldap/server/openldap/slapd.conf.erb')
   }
 
