@@ -49,22 +49,3 @@ cn: _member_
 objectClass: organizationalRole
 ou: _member_
 
-dn: cn=Member,ou=Roles,<%= basedn %>
-cn: Member
-objectClass: organizationalRole
-ou: Member
-
-dn: cn=admin,ou=Roles,<%= basedn %>
-cn: admin
-objectClass: organizationalRole
-ou: admin
-
-dn: uid=admin,ou=Users,<%= basedn %>
-cn: admin
-objectClass: inetOrgPerson
-sn: TRUE
-businessCategory: default
-mail: admin@cloud.com
-uid: admin
-userPassword: <%= ksadminpw %> 
-
