@@ -99,5 +99,6 @@ define ldap::define::domain(
     creates   => "${ldap::params::lp_openldap_var_dir}/${name}/id2entry.bdb",
     require   => Class['ldap::server::rebuild'],
     before    => Class['ldap::server::service'],
+    notify    => Service[$ldap::params::lp_openldap_service],
   }
 }
