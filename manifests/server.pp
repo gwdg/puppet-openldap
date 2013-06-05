@@ -17,7 +17,8 @@ class ldap::server(
   $ssl      = '',
   $ssl_ca   = '',
   $ssl_cert = '',
-  $ssl_key  = ''
+  $ssl_key  = '',
+  $lp_loglevel = 'none'
 ) {
   anchor { 'ldap::server::begin': }
   -> class { 'ldap::server::package':
@@ -28,6 +29,7 @@ class ldap::server(
     ssl_ca   => $ssl_ca,
     ssl_cert => $ssl_cert,
     ssl_key  => $ssl_key,
+    lp_loglevel => $lp_loglevel
   }
   -> class { 'ldap::server::rebuild': }
   -> class { 'ldap::server::service': }

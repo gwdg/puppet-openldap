@@ -57,7 +57,8 @@ class ldap(
   $ssl         = false,
   $ssl_ca      = '',
   $ssl_cert    = '',
-  $ssl_key     = ''
+  $ssl_key     = '',
+  $lp_loglevel    = 'none'
 ) {
   include stdlib
   include ldap::params
@@ -87,6 +88,7 @@ class ldap(
       ssl_ca      => $ssl_ca,
       ssl_cert    => $ssl_cert,
       ssl_key     => $ssl_key,
+      lp_loglevel => $lp_loglevel,
       require     => Anchor['ldap::begin::server'],
       before      => Anchor['ldap::end::server'],
     }

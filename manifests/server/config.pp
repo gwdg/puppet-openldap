@@ -18,7 +18,8 @@ class ldap::server::config (
   $ssl      = undef,
   $ssl_ca   = undef,
   $ssl_cert = undef,
-  $ssl_key  = undef
+  $ssl_key  = undef,
+  $lp_loglevel = 'none'
 ) {
   File {
     owner => 'root',

@@ -1,0 +1,70 @@
+# example.org
+dn: <%= basedn %>
+objectClass: dcObject
+objectClass: organization
+objectClass: top
+o: <%= name %>
+dc: <%= name.split('.')[0] %>
+description: <%= name %>
+
+dn: <%= rootdn %>,<%= basedn %>
+roleOccupant: <%= basedn %>
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: <%= rootdn.gsub!(/^(..)=/, '') %>
+description: LDAP administrator
+userPassword: <%= rootpw %>
+
+dn: ou=Users,<%= basedn %>
+ou: Users
+objectClass: organizationalUnit
+objectClass: top
+description: Users subtree
+
+dn: ou=Groups,<%= basedn %>
+ou: Groups
+objectClass: organizationalUnit
+objectClass: top
+description: Tenants for keystone
+
+dn: ou=Roles,<%= basedn %>
+ou: Roles
+objectClass: organizationalUnit
+objectClass: top
+description: Roles for keystone
+
+dn: ou=Domains,<%= basedn %>
+ou: Domains
+objectClass: organizationalUnit
+objectClass: top
+description: needed by Grizzly
+
+dn: cn=default,ou=Domains,<%= basedn %>
+cn: default
+objectClass: groupOfNames
+member: cn=dumb,dc=nonexistent
+
+dn: cn=_member_,ou=Roles,<%= basedn %>
+cn: _member_
+objectClass: organizationalRole
+ou: _member_
+
+dn: cn=Member,ou=Roles,<%= basedn %>
+cn: Member
+objectClass: organizationalRole
+ou: Member
+
+dn: cn=admin,ou=Roles,<%= basedn %>
+cn: admin
+objectClass: organizationalRole
+ou: admin
+
+dn: uid=admin,ou=Users,<%= basedn %>
+cn: admin
+objectClass: inetOrgPerson
+sn: TRUE
+businessCategory: default
+mail: admin@cloud.com
+uid: admin
+userPassword: <%= ksadminpw %> 
+
