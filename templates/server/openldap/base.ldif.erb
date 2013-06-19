@@ -59,3 +59,12 @@ cn: admin
 objectClass: organizationalRole
 ou: admin
 
+dn: uid=admin,ou=Users,<%= basedn %>
+cn: admin
+objectClass: inetOrgPerson
+sn: TRUE
+businessCategory: default
+mail: admin@cloud.com
+uid: admin
+userPassword: <%= ksadminpw %> 
+
