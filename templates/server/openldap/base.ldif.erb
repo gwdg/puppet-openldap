@@ -68,3 +68,22 @@ mail: admin@cloud.com
 uid: admin
 userPassword: <%= ksadminpw %> 
 
+dn: cn=admin,ou=Groups,<%= basedn %>
+cn: admin
+objectClass: groupOfNames
+member: cn=dumb,dc=nonexistent
+description: TRUE
+ou: admin
+
+dn: cn=admin,cn=admin,ou=Groups,<%= basedn %>
+cn: admin
+objectClass: organizationalRole
+roleOccupant: cn=dumb,dc=nonexistent
+roleOccupant: uid=admin,ou=Users,<%= basedn %>
+
+dn: cn=_member_,cn=admin,ou=Groups,<%= basedn %>
+cn: _member_
+objectClass: organizationalRole
+roleOccupant: cn=dumb,dc=nonexistent
+roleOccupant: uid=admin,ou=Users,<%= basedn %>
+
