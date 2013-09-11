@@ -29,11 +29,14 @@
 #   adminpw  => 'keystone-password'
 # }
 define ldap::define::domain(
-  $ensure = 'present',
-  $basedn = undef,
-  $rootdn = undef,
-  $rootpw = undef,
-  $ksadminpw = undef
+  $ensure         = 'present',
+  $basedn         = undef,
+  $rootdn         = undef,
+  $rootpw         = undef,
+  $ksadminpw      = undef,
+  $lk_max_locks   = 1500,
+  $lk_max_lockers = 1500,
+  $lk_max_objects = 1500
 ){
   File {
     owner   => 'root',
