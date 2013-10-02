@@ -62,6 +62,7 @@ ou: admin
 dn: uid=admin,ou=Users,<%= basedn %>
 cn: admin
 objectClass: inetOrgPerson
+objectClass: person
 sn: TRUE
 businessCategory: default
 mail: admin@cloud.com
@@ -74,6 +75,8 @@ objectClass: groupOfNames
 member: cn=dumb,dc=nonexistent
 description: TRUE
 ou: admin
+o: Tenant for admin
+businessCategory: default
 
 dn: cn=admin,cn=admin,ou=Groups,<%= basedn %>
 cn: admin
